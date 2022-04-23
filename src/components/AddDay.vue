@@ -124,7 +124,7 @@ ul {
 }
 
 label {
-  text-decoration: underline;
+  font-weight: bold;
 }
 
 input, select {

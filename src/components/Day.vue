@@ -4,7 +4,10 @@
       {{ day.weekDay }}
       <i @click="$emit('delete-day', day._id)" class="fas fa-times"></i>
     </h3>
-    <h4>{{ day.dayName }}</h4>
+    <h4>
+      {{ day.dayName }}
+      <!-- <i @click="$emit('edit-day', day._id)" class="fa-solid fa-pen-to-square"></i> -->
+    </h4>
     <p>{{ day.exercises.length }} exercises</p>
     <details>
       <summary>Exercises details</summary>
@@ -45,15 +48,20 @@ ul {
   list-style: none;
 }
 
-h3 {
+h3, h4 {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-i {
+.fa-times {
   color: #be0000;
   cursor: pointer;
+}
+
+.fa-pen-to-square {
+  color: #002261;
+  cursor: pointer
 }
 
 .exercise-details {

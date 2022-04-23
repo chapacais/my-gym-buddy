@@ -3,7 +3,7 @@
     <p class="no-days-added" v-show="daysArray.length == 0">No Workouts Added</p>
     <div class="grid-container">
       <div v-for="day of daysArray.sort((a, b) => a.weekDayID - b.weekDayID)" :key="day._id">
-        <Day @delete-day="$emit('delete-day', day._id)" :day="day" />
+        <Day @edit-day="$emit('edit-day', day._id)" @delete-day="$emit('delete-day', day._id)" :day="day" />
       </div>
     </div>
 </template>
@@ -19,13 +19,12 @@ export default {
   props: {
     daysArray: Array
   },
-  emits: ['delete-day']
+  emits: ['delete-day', 'edit-day']
 }
 </script>
 
 <style scoped>
 h3 {
-  color: #333333;
   border-top: 1px solid rgba(0, 0, 0, 0.3);
   padding-top: 10px;
 }

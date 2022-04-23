@@ -7,8 +7,8 @@
       :color="formVisible ? 'red' : 'black'" 
       :title="formVisible ? 'Close' : 'Add New Workout Day'" />
     </div>
-    <AddDay @close-add-day="toggleForm" @add-day="addDay" v-show="formVisible" />
-    <Days @delete-day="deleteDay" :daysArray="days" />
+    <AddDay @close-add-day="toggleForm" @add-day="addDay" v-show="formVisible" :editingForm="editingDay" :dayEditingObject="dayEdit[0]"/>
+    <Days @edit-day="editDay" @delete-day="deleteDay" :daysArray="days" />
   </div>
   <Footer />
 </template>
@@ -32,7 +32,9 @@ export default {
   data() {
     return {
       days: [],
-      formVisible: false
+      formVisible: false,
+      dayEdit: [],
+      editingDay: false,
     }
   },
   methods: {
@@ -50,6 +52,10 @@ export default {
         this.days = this.days.filter((day) => day._id !== id);
         localStorage.setItem('days', JSON.stringify(this.days));
       }
+    },
+    editDay(id) {
+      this.dayEdit = this.days.filter((day) => day._id == id);
+      this.editingDay = true;
     }
   },
   mounted() {
@@ -70,6 +76,7 @@ export default {
 
 body {
   font-family: 'Work Sans', sans-serif;
+  background: #d1d1d1;
 }
 
 details {
@@ -84,6 +91,7 @@ details {
   border: 1px solid #000;
   border-radius: 3px;
   padding: 20px;
+  background: #fff;
 }
 
 .center {
@@ -113,9 +121,8 @@ details {
 
 @media screen and (max-width: 750px) {
   .container {
-    border: none;
-    border-bottom: 1px solid #000;
-    margin: 0 auto 20px;
+    border: 1px 0 1px 0 solid #000;
+    border-radius: 0;
   }
 }
 </style>

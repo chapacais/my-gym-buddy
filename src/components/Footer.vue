@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="footer-container">
     <p>Developed by <a href="https://github.com/chapacais" target="_blank">Pedro Chapacais</a></p>
     <div class="footer__icons">
         <a href="https://www.linkedin.com/in/pedro-chapacais/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
@@ -21,7 +21,7 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-top: auto;
+  margin: auto;
 }
 
 p {
@@ -38,8 +38,8 @@ p {
   transition: all 0.2s;
 }
 
-.fa-brands:hover {
-  color: #9900ff;
+.fa-brands:hover, a:hover {
+  color: #222;
 }
 
 @media screen and (max-width: 600px) {
